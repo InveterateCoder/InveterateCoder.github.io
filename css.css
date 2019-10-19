@@ -111,24 +111,6 @@ section {
 #hs {
     display: none;
 }
-
-@media only screen and (max-width: 832px){
-    #hw {
-        display: none;
-    }
-    #hs {
-        display: block;
-    }
-    #main {
-        margin-left: 0;
-    }
-    #nleft {
-        display: none;
-    }
-    #ntop{
-        display: flex;
-    }
-}
 .text {
     color:#757575;
     line-height: 1.5;
@@ -170,4 +152,60 @@ meter::-webkit-meter-optimum-value {
 }
 .dbtn:hover {
     background-color: #c5c5c5;
+}
+.container{
+    display: flex;
+    margin-top: 3px;
+    width: 100%;
+}
+.left_panel{
+    margin: 7px 7px 10px 0;
+}
+.right_panel{
+    margin: 7px 0 10px 7px;
+}
+.card{
+    position: relative;
+    margin-top:7px;
+    cursor: default;
+}
+.card > .onimg {
+    position: absolute;
+    background-color: rgba(34,34,34, 0.7);
+    padding: 3px 5px;
+    border-radius: 10px;
+}
+.card > .header {
+    font-size: 1.2rem;
+    top:10px;
+    left: 10px;
+}
+.card > .description {
+    top:50px;
+    left: 50px;
+}
+.card > .tech {
+    bottom: 50px;
+    left: 50px;
+}
+.card > .btns {
+    bottom: 10px;
+    left: 10px;
+}
+@media only screen and (max-width: 832px){
+    #hw {
+        display: none;
+    }
+    #hs {
+        display: block;
+    }
+    #main {
+        margin-left: 0;
+    }
+    #nleft {
+        display: none;
+    }
+    #ntop{
+        display: flex;
+    }
 }
