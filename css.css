@@ -134,6 +134,9 @@ meter::-webkit-meter-bar {
 meter::-webkit-meter-optimum-value {
     background: #616161;
 }
+meter::-moz-meter-bar {
+    background: #616161;
+}
 .submeter {
     width: 75%;
     margin: auto;
@@ -246,7 +249,7 @@ meter::-webkit-meter-optimum-value {
 @media only screen and (max-width: 670px) {
     .container {
         flex-direction: column;
-        font-size: 2.5vw;
+        font-size: 2.65vw;
     }
     .left_panel {
         margin: 7px 0 0 0;
@@ -258,11 +261,11 @@ meter::-webkit-meter-optimum-value {
         width: 25px;
     }
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 400px) {
     .card > .btns > div > img {
         width: 20px;
     }
     .container {
-        font-size: 0.784rem;
+        font-size: 0.66rem;
     }
 }
