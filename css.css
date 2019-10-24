@@ -5,6 +5,9 @@ body {
     background-color: black;
     color: white;
 }
+header > div, header > p {
+    cursor: default;
+}
 .noselect {
     -webkit-touch-callout: none;
       -webkit-user-select: none;
