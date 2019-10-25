@@ -171,12 +171,6 @@ meter::-moz-meter-bar {
     display: flex;
     margin-top: 3px;
     width: 100%;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-     -khtml-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
 }
 .left_panel{
     margin: 7px 7px 10px 0;
@@ -184,21 +178,26 @@ meter::-moz-meter-bar {
 .right_panel{
     margin: 7px 0 10px 7px;
 }
-.card{
+.card {
     position: relative;
-    margin-top:7px;
+    margin-top:15px;
     cursor: default;
+}
+.card > img {
+    margin-bottom: -4px;
 }
 .card > .onimg {
     position: absolute;
     background-color: rgba(34,34,34, 0.7);
     padding: 3px 5px;
     border-radius: 10px;
+    box-shadow: 0 0 10px 3px black;
 }
 .card > .header {
     font-size:1.2em;
     top:10px;
     left:10px;
+    background-color: black;
 }
 .card > .description {
     top:50px;
