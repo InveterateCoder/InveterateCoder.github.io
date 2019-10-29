@@ -182,6 +182,7 @@ meter::-moz-meter-bar {
     position: relative;
     margin-top:15px;
     cursor: default;
+    box-shadow: 0 0 3px silver;
 }
 .card > img {
     margin-bottom: -4px;
@@ -200,20 +201,34 @@ meter::-moz-meter-bar {
     background-color: black;
 }
 .card > .description {
-    top:50px;
+    top:60px;
     left:50px;
+    margin-right: 10px;
 }
 .card > .descriptionH {
     top:100px;
     left:50px;
+    margin-right: 10px;
+}
+.card > .descriptionHH {
+    top:150px;
+    left:50px;
+    margin-right: 10px;
 }
 .card > .tech {
-    bottom:50px;
+    bottom:60px;
     left:50px;
+    margin-right: 10px;
 }
 .card > .techH {
     bottom:100px;
     left:50px;
+    margin-right: 10px;
+}
+.card > .techHH {
+    bottom:150px;
+    left:50px;
+    margin-right: 10px;
 }
 .card > .btns {
     bottom:10px;
