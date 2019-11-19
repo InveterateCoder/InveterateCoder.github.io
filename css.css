@@ -244,6 +244,49 @@ meter::-moz-meter-bar {
 .card > .btns > a > img {
     width: 25px;
 }
+.pers_info {
+    color:#757575;
+}
+.pers_info > i {
+    width: 1.28571429em;
+    font-size: 36px;
+    color: white;
+    margin-right: 16px;
+    text-align: center;
+}
+#snd_eml {
+    padding: 15px 25px;
+    border: none;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1em;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+#snd_eml:hover{
+    background-color: #d1d1d1;
+}
+footer {
+    font-size: 25px;
+    margin-bottom: 50px;
+}
+footer > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+footer > ul > li {
+    display: inline-block;
+}
+footer a {
+    cursor: default;
+}
+footer i {
+    color: #757575;
+}
+footer i:hover {
+    color: #454545;
+}
 @media only screen and (max-width: 1143px){
     .container{
         font-size: 1.31vw;
