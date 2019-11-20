@@ -187,6 +187,12 @@ meter::-moz-meter-bar {
 .card > img {
     margin-bottom: -4px;
 }
+.card > div {
+    transition: opacity .6s;
+}
+.card:not(:hover) > div {
+    opacity: 0;
+}
 .card > .onimg {
     position: absolute;
     background-color: rgba(34,34,34, 0.7);
