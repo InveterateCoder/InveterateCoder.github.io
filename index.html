@@ -291,7 +291,7 @@
                     <p id="lbl">Lets get in touch. Send me a message:</p>
                     <textarea id="msg" placeholder="Message"></textarea>
                     <p>
-                        <button id="snd_eml" class="noselect">
+                        <button id="snd_eml" class="noselect" onclick="open_eml()">
                             <i class="fa fa-paper-plane"></i>
                             SEND MESSAGE
                         </button>
@@ -365,6 +365,10 @@
                 document.getElementById(active).classList.remove("active");
                 document.getElementById(element).classList.add("active");
                 active = element;
+            }
+            function open_eml(){
+                const txt = document.getElementById('msg').value;
+                window.location.href = "mailto:inveterate.coder@gmail.com?subject=Message from the Portfolio" + (txt ? "&body=" + encodeURIComponent(txt) : "");
             }
         </script>
     </body>
