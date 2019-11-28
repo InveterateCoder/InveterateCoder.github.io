@@ -97,6 +97,7 @@ section {
     opacity: 0.6;
     align-items: stretch;
     line-height: 34px;
+    z-index: 200;
 }
 #ntop a:link {
     text-decoration: none;
