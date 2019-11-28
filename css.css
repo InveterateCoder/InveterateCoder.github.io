@@ -155,6 +155,13 @@ meter::-moz-meter-bar {
 .submeter > p {
     text-align: center;
 }
+.merit {
+    margin-bottom: 25px;
+    color: #757575;
+}
+.merit a {
+    color: white;
+}
 .dbtn {
     padding: 14px 24px;
     display: inline-block;
