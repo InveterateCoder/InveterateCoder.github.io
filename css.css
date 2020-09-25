@@ -136,12 +136,15 @@ section {
     letter-spacing: 4px;
 }
 meter {
-    height: 28px;
     width: 100%;
+    margin-bottom: 10px;
 }
 meter::-webkit-meter-bar {
     background: none;
     background-color: white;
+    border-radius: 0;
+    border: none;
+    height: 28px;
 }
 meter::-webkit-meter-optimum-value {
     background: #616161;
