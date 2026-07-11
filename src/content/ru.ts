@@ -104,7 +104,7 @@ export const ru: Content = {
 
   hero: {
     ...en.hero,
-    badge: 'Открыт к Go-вакансиям',
+    badge: 'Открыт к предложениям',
     headline: { greetPrefix: 'Я — ', name: 'Arthur', buildPrefix: 'Делаю ', buildWord: 'бэкенд' },
     cta: { work: 'Мои проекты', resume: 'Резюме', howIBuild: 'Как я работаю' },
     meta: '11 лет · NestJS · Postgres · Go',

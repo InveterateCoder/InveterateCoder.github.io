@@ -20,10 +20,13 @@ export function Experience() {
       />
 
       <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr]">
-        <ol className="relative border-l border-white/10 pl-7 sm:pl-9">
+        <ol className="relative">
           {exp.items.map((e) => (
-            <li key={e.id} className="relative pb-10 last:pb-0">
-              <span className="absolute top-1.5 left-[-7px] h-3.5 w-3.5 rounded-full bg-gradient-to-br from-cyan to-violet ring-4 ring-void" />
+            <li
+              key={e.id}
+              className="relative border-l border-white/10 pb-10 pl-7 last:pb-0 sm:pl-9"
+            >
+              <span className="absolute top-1.5 left-0 h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-gradient-to-br from-cyan to-violet ring-4 ring-void" />
               <Reveal>
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                   <span className="font-mono text-xs text-cyan">{e.dateRange}</span>

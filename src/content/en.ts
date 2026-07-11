@@ -48,7 +48,7 @@ export const en = {
   ],
 
   hero: {
-    badge: 'Open to Go roles',
+    badge: 'Open to opportunities',
     headline: { greetPrefix: "I'm ", name: 'Arthur', buildPrefix: 'I build ', buildWord: 'backends' },
     cta: { work: 'See my work', resume: 'Résumé', howIBuild: 'How I build' },
     meta: '11 yrs · NestJS · Postgres · Go',
