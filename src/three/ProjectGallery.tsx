@@ -11,7 +11,6 @@ import { Canvas, useFrame, type ThreeEvent } from '@react-three/fiber'
 import { AdaptiveDpr, Billboard, Image, PerformanceMonitor } from '@react-three/drei'
 import * as THREE from 'three'
 import type { Project } from '@/data/types'
-import { projects } from '@/data/projects'
 
 const RADIUS = 4.2
 const CARD_W = 2.6
@@ -78,7 +77,6 @@ function Card({
             }}
             onClick={(e: ThreeEvent<MouseEvent>) => {
               e.stopPropagation()
-              // Suppress the click that concludes a drag.
               if (drag.current.moved) return
               onSelect(project)
             }}
@@ -89,13 +87,20 @@ function Card({
   )
 }
 
-function Ring({ onSelect, drag }: { onSelect: (p: Project) => void; drag: RefObject<DragState> }) {
+function Ring({
+  items,
+  onSelect,
+  drag,
+}: {
+  items: readonly Project[]
+  onSelect: (p: Project) => void
+  drag: RefObject<DragState>
+}) {
   const group = useRef<THREE.Group>(null!)
 
   useFrame((_, dt) => {
     const d = drag.current
     if (!d.active) {
-      // Frame-rate-independent inertia + gentle idle spin (dt-normalised to 60fps).
       const k = dt * 60
       d.rot += d.vel * k
       d.vel *= Math.pow(0.92, k)
@@ -106,12 +111,12 @@ function Ring({ onSelect, drag }: { onSelect: (p: Project) => void; drag: RefObj
 
   return (
     <group ref={group}>
-      {projects.map((p, i) => (
+      {items.map((p, i) => (
         <Card
           key={p.slug}
           project={p}
           index={i}
-          count={projects.length}
+          count={items.length}
           onSelect={onSelect}
           drag={drag}
         />
@@ -120,7 +125,13 @@ function Ring({ onSelect, drag }: { onSelect: (p: Project) => void; drag: RefObj
   )
 }
 
-export default function ProjectGallery({ onSelect }: { onSelect: (p: Project) => void }) {
+export default function ProjectGallery({
+  items,
+  onSelect,
+}: {
+  items: readonly Project[]
+  onSelect: (p: Project) => void
+}) {
   const drag = useRef<DragState>({
     rot: 0,
     vel: 0,
@@ -130,9 +141,6 @@ export default function ProjectGallery({ onSelect }: { onSelect: (p: Project) =>
     moved: false,
   })
 
-  // Drag is tracked on `window` (not via setPointerCapture) so that the pointer
-  // capture does NOT retarget the concluding `click` to the wrapper — which would
-  // stop it reaching react-three-fiber's listener and break card selection.
   const onWindowMove = useCallback((e: PointerEvent) => {
     const d = drag.current
     if (!d.active) return
@@ -165,7 +173,6 @@ export default function ProjectGallery({ onSelect }: { onSelect: (p: Project) =>
     [onWindowMove, endDrag],
   )
 
-  // Clean up any dangling listeners on unmount.
   useEffect(() => endDrag, [endDrag])
 
   return (
@@ -177,7 +184,7 @@ export default function ProjectGallery({ onSelect }: { onSelect: (p: Project) =>
         <PerformanceMonitor />
         <AdaptiveDpr pixelated />
         <Suspense fallback={null}>
-          <Ring onSelect={onSelect} drag={drag} />
+          <Ring items={items} onSelect={onSelect} drag={drag} />
         </Suspense>
       </Canvas>
     </div>

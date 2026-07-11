@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { ArrowUpRight, FileText, Sparkles } from 'lucide-react'
-import { site } from '@/data/site'
+import { useContent } from '@/hooks/useContent'
 import { Container } from '@/components/layout/Container'
 import { SocialLinks } from '@/components/layout/SocialLinks'
 import { Button } from '@/components/ui/Button'
@@ -9,11 +9,13 @@ import { TiltPhoto } from '@/components/TiltPhoto'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 export function Hero() {
+  const c = useContent()
   const ref = useRef<HTMLElement>(null)
   const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 120])
   const opacity = useTransform(scrollYProgress, [0, 0.85], [1, reduce ? 1 : 0])
+  const h = c.hero.headline
 
   return (
     <section
@@ -32,37 +34,38 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
               </span>
-              Open to Go roles
+              {c.hero.badge}
             </span>
 
             <h1 className="text-5xl leading-[1.05] font-bold tracking-tight sm:text-6xl lg:text-7xl">
-              I&apos;m <span className="text-gradient animate-gradient">Arthur</span>.
-              <br />I build <span className="text-gradient animate-gradient">backends</span>.
+              {h.greetPrefix}
+              <span className="text-gradient animate-gradient">{h.name}</span>.
+              <br />
+              {h.buildPrefix}
+              <span className="text-gradient animate-gradient">{h.buildWord}</span>.
             </h1>
 
-            <p className="max-w-xl text-lg text-muted">{site.tagline}</p>
+            <p className="max-w-xl text-lg text-muted">{c.tagline}</p>
 
             <div className="flex flex-wrap items-center gap-3">
               <Button href="#work">
-                See my work
+                {c.hero.cta.work}
                 <ArrowUpRight size={16} />
               </Button>
               <Button to="/resume" variant="outline">
                 <FileText size={16} />
-                Résumé
+                {c.hero.cta.resume}
               </Button>
               <Button href="#ai" variant="ghost">
                 <Sparkles size={16} />
-                How I build
+                {c.hero.cta.howIBuild}
               </Button>
             </div>
 
             <div className="mt-2 flex items-center gap-4">
-              <SocialLinks links={site.socials} />
+              <SocialLinks links={c.socials} />
               <span className="h-px flex-1 bg-white/10" />
-              <span className="hidden font-mono text-xs text-faint sm:inline">
-                11 yrs · NestJS · Postgres · Go
-              </span>
+              <span className="hidden font-mono text-xs text-faint sm:inline">{c.hero.meta}</span>
             </div>
           </div>
 

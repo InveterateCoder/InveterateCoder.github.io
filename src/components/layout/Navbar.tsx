@@ -1,15 +1,17 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { FileText, Menu, X } from 'lucide-react'
-import { site } from '@/data/site'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
+import { useContent } from '@/hooks/useContent'
 import { cn } from '@/lib/cn'
 import { Button } from '@/components/ui/Button'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 
 export function Navbar() {
+  const c = useContent()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const ids = useMemo(() => site.nav.map((n) => n.id), [])
+  const ids = useMemo(() => c.nav.map((n) => n.id), [c.nav])
   const active = useScrollSpy(ids)
 
   useEffect(() => {
@@ -30,9 +32,6 @@ export function Navbar() {
   const closeBtnRef = useRef<HTMLButtonElement>(null)
   const prevOpen = useRef(false)
 
-  // While the mobile menu is open: Escape closes it, focus moves into it, and
-  // it auto-closes if the viewport grows past the `md` breakpoint (otherwise
-  // the body would stay scroll-locked with no visible control to unlock it).
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
@@ -54,7 +53,6 @@ export function Navbar() {
     }
   }, [open])
 
-  // Restore focus to the trigger when the menu closes.
   useEffect(() => {
     if (prevOpen.current && !open) openBtnRef.current?.focus()
     prevOpen.current = open
@@ -82,7 +80,7 @@ export function Navbar() {
         </a>
 
         <nav className="hidden items-center gap-0.5 md:flex">
-          {site.nav.map((n) => (
+          {c.nav.map((n) => (
             <a
               key={n.id}
               href={`#${n.id}`}
@@ -97,15 +95,16 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <LanguageSwitcher className="hidden sm:inline-flex" />
           <Button to="/resume" variant="outline" size="sm" className="hidden sm:inline-flex">
             <FileText size={15} />
-            Résumé
+            {c.ui.resume}
           </Button>
           <button
             ref={openBtnRef}
             className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-ink md:hidden"
             onClick={() => setOpen(true)}
-            aria-label="Open menu"
+            aria-label={c.ui.openMenu}
             aria-expanded={open}
           >
             <Menu size={18} />
@@ -122,18 +121,19 @@ export function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="flex items-center justify-end">
+            <div className="flex items-center justify-between">
+              <LanguageSwitcher />
               <button
                 ref={closeBtnRef}
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-ink"
                 onClick={() => setOpen(false)}
-                aria-label="Close menu"
+                aria-label={c.ui.closeMenu}
               >
                 <X size={20} />
               </button>
             </div>
             <nav className="mt-6 flex flex-col gap-1">
-              {site.nav.map((n) => (
+              {c.nav.map((n) => (
                 <a
                   key={n.id}
                   href={`#${n.id}`}
@@ -143,9 +143,14 @@ export function Navbar() {
                   {n.label}
                 </a>
               ))}
-              <Button to="/resume" variant="outline" className="mt-4 self-start" onClick={() => setOpen(false)}>
+              <Button
+                to="/resume"
+                variant="outline"
+                className="mt-4 self-start"
+                onClick={() => setOpen(false)}
+              >
                 <FileText size={16} />
-                Résumé
+                {c.ui.resume}
               </Button>
             </nav>
           </motion.div>

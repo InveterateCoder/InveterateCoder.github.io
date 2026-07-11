@@ -1,6 +1,5 @@
 import { motion } from 'motion/react'
-import type { Skill } from '@/data/types'
-import { skillGroups } from '@/data/skills'
+import { useContent } from '@/hooks/useContent'
 import { Section } from '@/components/layout/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { GlowCard } from '@/components/ui/GlowCard'
@@ -8,7 +7,14 @@ import { Reveal } from '@/components/ui/Reveal'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { cn } from '@/lib/cn'
 
-function SkillBar({ skill }: { skill: Skill }) {
+interface SkillItem {
+  name: string
+  level: number
+  note?: string
+  highlight?: boolean
+}
+
+function SkillBar({ skill }: { skill: SkillItem }) {
   const reduce = useReducedMotion()
   return (
     <div>
@@ -38,17 +44,19 @@ function SkillBar({ skill }: { skill: Skill }) {
 }
 
 export function Skills() {
+  const { skills } = useContent()
+
   return (
     <Section id="skills">
       <SectionHeading
         index="02"
-        eyebrow="Skills"
-        title="The toolbox"
-        subtitle="Deep in the TypeScript/Node backend world, comfortable on Linux, and pointing the next chapter at Go."
+        eyebrow={skills.eyebrow}
+        title={skills.title}
+        subtitle={skills.subtitle}
       />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {skillGroups.map((group, i) => (
+        {skills.groups.map((group, i) => (
           <Reveal key={group.title} delay={i * 0.06}>
             <GlowCard className="h-full">
               <h3 className="eyebrow mb-5">{group.title}</h3>

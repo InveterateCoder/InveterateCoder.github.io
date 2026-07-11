@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import '@fontsource-variable/inter'
 import '@fontsource-variable/jetbrains-mono'
 import '@/styles/index.css'
+import '@/i18n'
 
 import App from '@/App'
 

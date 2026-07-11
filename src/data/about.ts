@@ -3,8 +3,7 @@
 export const intro = [
   "I try to keep things informative and succinct. English isn't my native language, so I'll aim for clarity over polish.",
   'I think of myself as an ordinary person with a lot of restless, inventive ideas — most of them pointed at software — and the stubbornness to actually build them.',
-] as const
-
+]
 export const goals = {
   title: "What I'm aiming at",
   items: [
@@ -13,8 +12,7 @@ export const goals = {
     'Raise worthy, kind, clever kids.',
     'Never stop learning.',
   ],
-} as const
-
+}
 export const selfTaught = {
   eyebrow: 'The origin',
   title: 'Self-taught',
@@ -32,4 +30,4 @@ export const selfTaught = {
     { value: 26, suffix: '', label: 'Age I fell for CS' },
     { value: 11, suffix: '+', label: 'Years building since' },
   ],
-} as const
+}

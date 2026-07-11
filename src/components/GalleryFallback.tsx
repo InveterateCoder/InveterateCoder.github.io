@@ -1,5 +1,4 @@
 import type { Project } from '@/data/types'
-import { projects } from '@/data/projects'
 import { Reveal } from '@/components/ui/Reveal'
 import { Tag } from '@/components/ui/Tag'
 
@@ -8,10 +7,16 @@ import { Tag } from '@/components/ui/Tag'
  * visitor prefers reduced motion. Same click-to-open-modal behaviour as the
  * 3D gallery, so nothing is lost.
  */
-export function GalleryFallback({ onSelect }: { onSelect: (p: Project) => void }) {
+export function GalleryFallback({
+  items,
+  onSelect,
+}: {
+  items: readonly Project[]
+  onSelect: (p: Project) => void
+}) {
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {projects.map((p, i) => (
+      {items.map((p, i) => (
         <Reveal key={p.slug} delay={(i % 3) * 0.05}>
           <button
             onClick={() => onSelect(p)}

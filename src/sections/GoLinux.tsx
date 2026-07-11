@@ -1,23 +1,13 @@
 import { ArrowRight } from 'lucide-react'
-import { goLinux } from '@/data/narrative'
+import { useContent } from '@/hooks/useContent'
 import { Section } from '@/components/layout/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Reveal } from '@/components/ui/Reveal'
 import { Button } from '@/components/ui/Button'
 
-type Line = { prompt?: boolean; text: string; out?: boolean }
-
-const terminal: Line[] = [
-  { prompt: true, text: 'go version' },
-  { text: 'go version go1.23 linux/amd64', out: true },
-  { prompt: true, text: 'go run whoami.go' },
-  { text: 'Arthur Grigoryan — backend engineer.', out: true },
-  { text: 'Writes Go for the love of it.', out: true },
-  { text: 'Looking to make it the day job.', out: true },
-  { prompt: true, text: '' },
-]
-
 export function GoLinux() {
+  const { goLinux: g } = useContent()
+
   return (
     <Section id="go">
       <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
@@ -31,11 +21,11 @@ export function GoLinux() {
             </div>
             <pre className="overflow-x-auto p-5 font-mono text-sm leading-relaxed">
               <code>
-                {terminal.map((line, i) => (
+                {g.terminal.map((line, i) => (
                   <div key={i}>
                     {line.prompt && <span className="text-lime">$ </span>}
                     <span className={line.out ? 'text-muted' : 'text-ink'}>{line.text}</span>
-                    {line.prompt && i === terminal.length - 1 && (
+                    {line.prompt && i === g.terminal.length - 1 && (
                       <span className="ml-0.5 inline-block h-4 w-2 animate-pulse-glow bg-cyan align-middle" />
                     )}
                   </div>
@@ -46,15 +36,15 @@ export function GoLinux() {
         </Reveal>
 
         <div>
-          <SectionHeading index="06" eyebrow={goLinux.eyebrow} title={goLinux.title} />
+          <SectionHeading index="06" eyebrow={g.eyebrow} title={g.title} />
           <Reveal className="space-y-4 text-muted">
-            {goLinux.paragraphs.map((p, i) => (
+            {g.paragraphs.map((p, i) => (
               <p key={i} className="leading-relaxed">
                 {p}
               </p>
             ))}
             <Button href="#contact" className="mt-2">
-              {goLinux.cta}
+              {g.cta}
               <ArrowRight size={16} />
             </Button>
           </Reveal>

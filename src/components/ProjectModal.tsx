@@ -4,36 +4,38 @@ import { Download, ExternalLink, X } from 'lucide-react'
 import type { Project, ProjectLink } from '@/data/types'
 import { GithubIcon, YoutubeIcon } from '@/components/ui/icons'
 import { Tag } from '@/components/ui/Tag'
-
-function linkMeta(link: ProjectLink) {
-  switch (link.kind) {
-    case 'repo':
-      return { icon: <GithubIcon size={14} />, label: 'Code' }
-    case 'youtube':
-      return { icon: <YoutubeIcon size={14} />, label: 'Video' }
-    case 'live':
-      return { icon: <ExternalLink size={14} />, label: 'Live' }
-    case 'download':
-      return { icon: <Download size={14} />, label: 'Download' }
-    case 'store':
-      return { icon: <ExternalLink size={14} />, label: link.label ?? 'Store' }
-  }
-}
+import { useContent } from '@/hooks/useContent'
 
 export function ProjectLinks({ links }: { links: readonly ProjectLink[] }) {
+  const { linkLabels } = useContent()
+
+  const meta = (link: ProjectLink) => {
+    switch (link.kind) {
+      case 'repo':
+        return { icon: <GithubIcon size={14} />, label: linkLabels.code }
+      case 'youtube':
+        return { icon: <YoutubeIcon size={14} />, label: linkLabels.video }
+      case 'live':
+        return { icon: <ExternalLink size={14} />, label: linkLabels.live }
+      case 'download':
+        return { icon: <Download size={14} />, label: linkLabels.download }
+      case 'store':
+        return { icon: <ExternalLink size={14} />, label: link.label ?? linkLabels.store }
+    }
+  }
+
   return (
     <div className="flex flex-wrap gap-2">
       {links.map((l, i) => {
-        const { icon, label } = linkMeta(l)
+        const { icon, label } = meta(l)
         if (l.dead) {
           return (
             <span
               key={i}
-              title="This demo host is offline"
               className="inline-flex items-center gap-1.5 rounded-full border border-white/8 px-3 py-1.5 text-xs text-faint"
             >
               {icon}
-              {label} <span className="opacity-60">(offline)</span>
+              {label} <span className="opacity-60">({linkLabels.offline})</span>
             </span>
           )
         }

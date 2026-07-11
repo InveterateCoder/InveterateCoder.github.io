@@ -14,8 +14,7 @@ export const vibecoding = {
   ],
   // TODO(arthur): adjust the exact toolset you want to name.
   tools: ['Claude Code', 'Codex'],
-} as const
-
+}
 export const goLinux = {
   eyebrow: "What's next",
   title: 'Heading for Go. At home on Linux.',
@@ -26,4 +25,4 @@ export const goLinux = {
     'Linux is home. The terminal is where I’m happiest, and infrastructure I can reason about from the kernel up is a big part of why backend work still excites me.',
   ],
   cta: 'Open to Go roles',
-} as const
+}

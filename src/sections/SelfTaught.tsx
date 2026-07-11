@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'motion/react'
 import { BookOpen, Sparkles } from 'lucide-react'
-import { selfTaught } from '@/data/about'
+import { useContent } from '@/hooks/useContent'
 import { Section } from '@/components/layout/Section'
 import { Reveal } from '@/components/ui/Reveal'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
@@ -49,7 +49,13 @@ function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
   )
 }
 
-function BookCard() {
+function BookCard({
+  book,
+  arrow,
+}: {
+  book: { note: string; title: string; author: string }
+  arrow: string
+}) {
   return (
     <div className="relative mx-auto w-full max-w-xs" style={{ perspective: 900 }}>
       <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-cyan/30 via-violet/20 to-magenta/20 opacity-60 blur-3xl" />
@@ -59,24 +65,22 @@ function BookCard() {
         whileHover={{ rotateY: -8, rotateX: 5 }}
         transition={{ type: 'spring', stiffness: 200, damping: 18 }}
       >
-        {/* spine */}
         <div className="absolute inset-y-0 left-0 w-3 bg-gradient-to-b from-cyan/50 to-violet/50" />
         <div className="flex h-full flex-col justify-between p-6 pl-9">
           <div>
             <BookOpen size={28} className="text-cyan" />
             <p className="mt-6 font-mono text-[11px] tracking-widest text-faint uppercase">
-              {selfTaught.book.note}
+              {book.note}
             </p>
           </div>
           <div>
-            <h3 className="text-xl leading-snug font-bold text-ink">{selfTaught.book.title}</h3>
-            <p className="mt-2 text-sm text-muted">{selfTaught.book.author}</p>
+            <h3 className="text-xl leading-snug font-bold text-ink">{book.title}</h3>
+            <p className="mt-2 text-sm text-muted">{book.author}</p>
           </div>
           <div className="flex items-center gap-2 font-mono text-xs text-cyan">
-            <Sparkles size={13} /> curiosity → career
+            <Sparkles size={13} /> {arrow}
           </div>
         </div>
-        {/* sheen */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent" />
       </motion.div>
     </div>
@@ -84,6 +88,7 @@ function BookCard() {
 }
 
 export function SelfTaught() {
+  const { selfTaught: st } = useContent()
   const ref = useRef<HTMLElement>(null)
   const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
@@ -91,7 +96,6 @@ export function SelfTaught() {
 
   return (
     <Section id="self-taught" className="relative overflow-hidden">
-      {/* decorative backdrop */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute top-1/2 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet/10 blur-[130px]" />
         <motion.div
@@ -107,16 +111,16 @@ export function SelfTaught() {
           <Reveal>
             <span className="eyebrow flex items-center gap-2">
               <span className="h-px w-6 bg-cyan/50" />
-              {selfTaught.eyebrow}
+              {st.eyebrow}
             </span>
             <h2 className="mt-3 text-6xl font-bold tracking-tight sm:text-7xl">
-              <span className="text-gradient animate-gradient">{selfTaught.title}</span>
+              <span className="text-gradient animate-gradient">{st.title}</span>
             </h2>
-            <p className="mt-4 text-xl text-balance text-ink/90">{selfTaught.lead}</p>
+            <p className="mt-4 text-xl text-balance text-ink/90">{st.lead}</p>
           </Reveal>
 
           <Reveal delay={0.1} className="mt-5 space-y-4 text-muted">
-            {selfTaught.story.map((p, i) => (
+            {st.story.map((p, i) => (
               <p key={i} className="leading-relaxed">
                 {emph(p)}
               </p>
@@ -124,7 +128,7 @@ export function SelfTaught() {
           </Reveal>
 
           <Reveal delay={0.2} className="mt-9 flex flex-wrap gap-x-10 gap-y-6">
-            {selfTaught.stats.map((s) => (
+            {st.stats.map((s) => (
               <div key={s.label}>
                 <div className="text-gradient text-4xl font-bold sm:text-5xl">
                   <Counter to={s.value} suffix={s.suffix} />
@@ -134,13 +138,13 @@ export function SelfTaught() {
             ))}
             <div>
               <div className="text-gradient text-4xl font-bold sm:text-5xl">∞</div>
-              <div className="mt-1 text-xs text-faint">Still learning</div>
+              <div className="mt-1 text-xs text-faint">{st.stillLearning}</div>
             </div>
           </Reveal>
         </div>
 
         <Reveal delay={0.15}>
-          <BookCard />
+          <BookCard book={st.book} arrow={st.arrow} />
         </Reveal>
       </div>
     </Section>
