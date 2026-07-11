@@ -1,4 +1,4 @@
-import type { PointerEvent } from 'react'
+import { useEffect, useRef } from 'react'
 import {
   motion,
   useMotionTemplate,
@@ -10,31 +10,43 @@ import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { cn } from '@/lib/cn'
 
 /**
- * Pointer-driven 3D tilt of the hero portrait. Uses CSS `perspective` +
- * `rotateX/Y` driven by motion springs — Pointer Events unify mouse & touch,
- * and it degrades to a static framed image under prefers-reduced-motion.
+ * 3D tilt of the hero portrait that follows the pointer across the WHOLE
+ * window (mouse and touch), not just while hovering the photo. The tilt is
+ * driven by the pointer's position relative to the card's centre, normalised
+ * over the viewport, and smoothed with motion springs. Degrades to a static
+ * framed image under prefers-reduced-motion.
  */
 export function TiltPhoto({ src = '/me.jpg', className }: { src?: string; className?: string }) {
   const reduce = useReducedMotion()
+  const containerRef = useRef<HTMLDivElement>(null)
 
+  // 0..1 pointer position relative to the card centre (0.5 = neutral/flat).
   const px = useMotionValue(0.5)
   const py = useMotionValue(0.5)
-  const spring = { stiffness: 150, damping: 18, mass: 0.6 }
-  const rotX = useSpring(useTransform(py, [0, 1], [10, -10]), spring)
-  const rotY = useSpring(useTransform(px, [0, 1], [-12, 12]), spring)
+  const spring = { stiffness: 140, damping: 20, mass: 0.6 }
+  const rotX = useSpring(useTransform(py, [0, 1], [12, -12]), spring)
+  const rotY = useSpring(useTransform(px, [0, 1], [-16, 16]), spring)
   const glareX = useTransform(px, [0, 1], ['0%', '100%'])
   const glareY = useTransform(py, [0, 1], ['0%', '100%'])
-  const glare = useMotionTemplate`radial-gradient(circle at ${glareX} ${glareY}, rgba(255,255,255,0.25), transparent 45%)`
+  const glare = useMotionTemplate`radial-gradient(circle at ${glareX} ${glareY}, rgba(255,255,255,0.22), transparent 45%)`
 
-  const onMove = (e: PointerEvent<HTMLDivElement>) => {
-    const r = e.currentTarget.getBoundingClientRect()
-    px.set((e.clientX - r.left) / r.width)
-    py.set((e.clientY - r.top) / r.height)
-  }
-  const reset = () => {
-    px.set(0.5)
-    py.set(0.5)
-  }
+  useEffect(() => {
+    if (reduce) return
+    const onMove = (e: PointerEvent) => {
+      const el = containerRef.current
+      if (!el) return
+      const r = el.getBoundingClientRect()
+      const cx = r.left + r.width / 2
+      const cy = r.top + r.height / 2
+      // -1..1 across each half of the viewport, relative to the card centre.
+      const nx = Math.max(-1, Math.min(1, (e.clientX - cx) / (window.innerWidth / 2)))
+      const ny = Math.max(-1, Math.min(1, (e.clientY - cy) / (window.innerHeight / 2)))
+      px.set(0.5 + nx / 2)
+      py.set(0.5 + ny / 2)
+    }
+    window.addEventListener('pointermove', onMove, { passive: true })
+    return () => window.removeEventListener('pointermove', onMove)
+  }, [reduce, px, py])
 
   if (reduce) {
     return (
@@ -49,12 +61,7 @@ export function TiltPhoto({ src = '/me.jpg', className }: { src?: string; classN
   }
 
   return (
-    <div
-      className={cn('relative', className)}
-      style={{ perspective: 1000 }}
-      onPointerMove={onMove}
-      onPointerLeave={reset}
-    >
+    <div ref={containerRef} className={cn('relative', className)} style={{ perspective: 1000 }}>
       <motion.div
         className="relative aspect-square w-full"
         style={{ rotateX: rotX, rotateY: rotY, transformStyle: 'preserve-3d' }}

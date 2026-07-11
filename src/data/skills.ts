@@ -17,9 +17,7 @@ export const skillGroups = [
         highlight: true,
         note: 'Can build in Go — seeking my first commercial Go role',
       },
-      { name: 'C#', level: 60 },
       { name: 'Python', level: 55 },
-      { name: 'C / C++', level: 45 },
     ],
   },
   {
@@ -29,7 +27,6 @@ export const skillGroups = [
       { name: 'Node.js', level: 92 },
       { name: 'REST APIs', level: 92 },
       { name: 'Express', level: 85 },
-      { name: 'GraphQL', level: 55 },
     ],
   },
   {

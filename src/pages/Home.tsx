@@ -3,6 +3,7 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/sections/Hero'
 import { About } from '@/sections/About'
+import { SelfTaught } from '@/sections/SelfTaught'
 import { Skills } from '@/sections/Skills'
 import { Experience } from '@/sections/Experience'
 import { Projects } from '@/sections/Projects'
@@ -18,6 +19,7 @@ export function Home() {
       <main>
         <Hero />
         <About />
+        <SelfTaught />
         <Skills />
         <Experience />
         <Projects />

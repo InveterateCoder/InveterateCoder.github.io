@@ -9,6 +9,16 @@ export interface SocialLink {
   icon: SocialIcon
 }
 
+export type ContactKind = 'email' | 'phone' | 'telegram' | 'whatsapp' | 'max'
+
+export interface ContactMethod {
+  kind: ContactKind
+  label: string
+  href: string
+  /** Small secondary line under the label (handle / number). */
+  hint?: string
+}
+
 export interface NavItem {
   id: string
   label: string

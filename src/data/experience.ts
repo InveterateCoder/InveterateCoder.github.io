@@ -2,8 +2,9 @@ import type { ExperienceItem, Recognition } from './types'
 
 /**
  * Adapted to English from Arthur's résumé (≈11 yrs 9 mos total).
- * NOTE(arthur): Constructor Tech and EBAC both read as "Present" — confirm
- * which is primary / whether EBAC has ended, and fill the TODO locations/stacks.
+ * Constructor Tech acquired EBAC in Jun 2026, so EBAC ends there and the role
+ * continues under Constructor Tech (the only "current" entry).
+ * TODO(arthur): fill the remaining TODO company names / locations / stacks.
  */
 export const experience = [
   {
@@ -27,11 +28,10 @@ export const experience = [
     company: 'EBAC — Escola Britânica de Artes Criativas e Tecnologia',
     role: 'Software Developer · BPM team',
     start: 'Mar 2022',
-    end: 'Present',
+    end: 'Jun 2026',
     location: 'Remote — Brazil',
-    current: true,
     summary:
-      'Business Process Management team — building and running backend services in production.',
+      'Business Process Management team — building and running backend services in production, until EBAC was acquired by Constructor Tech.',
     highlights: [
       'Backend services in NestJS + TypeScript, deployed on AWS.',
       'PostgreSQL data modelling and Redis-backed workflows.',

@@ -1,4 +1,4 @@
-import type { SiteConfig } from './types'
+import type { ContactMethod, SiteConfig } from './types'
 
 export const site: SiteConfig = {
   name: 'Arthur Grigoryan',
@@ -8,8 +8,7 @@ export const site: SiteConfig = {
   // TODO(arthur): confirm the city/country to display publicly.
   location: 'TODO — city, country',
   email: 'inveterate.coder@gmail.com',
-  // TODO(arthur): add a phone number here if you want it shown.
-  // phone: '+00 000 000 0000',
+  phone: '+79340120202',
   // TODO(arthur): paste your Web3Forms access key (https://web3forms.com — free, takes a minute).
   web3formsKey: 'TODO-web3forms-access-key',
   nav: [
@@ -30,6 +29,19 @@ export const site: SiteConfig = {
     },
     // TODO(arthur): paste your LinkedIn profile URL.
     { label: 'LinkedIn', href: 'TODO-linkedin-url', icon: 'linkedin' },
-    { label: 'Email', href: 'mailto:inveterate.coder@gmail.com', icon: 'mail' },
   ],
 }
+
+/** Direct quick-write channels shown as buttons in the Contact section. */
+export const contacts = [
+  { kind: 'email', label: 'Email', href: 'mailto:inveterate.coder@gmail.com', hint: 'inveterate.coder@gmail.com' },
+  { kind: 'telegram', label: 'Telegram', href: 'https://t.me/InveterateCoder', hint: '@InveterateCoder' },
+  { kind: 'whatsapp', label: 'WhatsApp', href: 'https://wa.me/79340120202', hint: '+7 934 012 0202' },
+  {
+    kind: 'max',
+    label: 'Max',
+    href: 'https://max.ru/u/f9LHodD0cOKt7Iu1a_X29JcDTzFSA8L4mDYC9hFHHqhMGnEB6PuAGRlpRHQ',
+    hint: 'Message me on Max',
+  },
+  { kind: 'phone', label: 'Call', href: 'tel:+79340120202', hint: '+7 934 012 0202' },
+] satisfies ContactMethod[]

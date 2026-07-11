@@ -42,11 +42,6 @@ export const projects = [
     links: [
       { kind: 'youtube', href: 'https://youtu.be/KuGEr7fDiIM' },
       { kind: 'repo', href: 'https://github.com/InveterateCoder/Event-Log' },
-      {
-        kind: 'store',
-        href: 'https://www.microsoft.com/en-us/p/event-log/9mt5z69jh38b',
-        label: 'Microsoft Store',
-      },
     ],
   },
   {
@@ -59,11 +54,6 @@ export const projects = [
     image: '/projects/news.png',
     links: [
       { kind: 'repo', href: 'https://github.com/InveterateCoder/vKurse' },
-      {
-        kind: 'store',
-        href: 'https://play.google.com/store/apps/details?id=com.vkurse.news',
-        label: 'Google Play',
-      },
     ],
   },
   {
