@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && cp dist/index.html dist/404.html",
+    "build": "tsc -b && vite build && cp dist/index.html dist/404.html && cp dist/index.html dist/resume.html",
     "preview": "vite preview",
     "lint": "eslint .",
     "typecheck": "tsc -b",
