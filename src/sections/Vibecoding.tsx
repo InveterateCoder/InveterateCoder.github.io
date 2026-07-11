@@ -10,7 +10,7 @@ export function Vibecoding() {
 
   return (
     <Section id="ai">
-      <SectionHeading index="05" eyebrow={v.eyebrow} title={v.title} />
+      <SectionHeading index="06" eyebrow={v.eyebrow} title={v.title} />
 
       <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr]">
         <Reveal className="space-y-5">

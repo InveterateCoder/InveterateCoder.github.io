@@ -29,7 +29,7 @@ export function Contact() {
   return (
     <Section id="contact">
       <SectionHeading
-        index="07"
+        index="08"
         eyebrow={contact.eyebrow}
         title={contact.title}
         subtitle={contact.subtitle}

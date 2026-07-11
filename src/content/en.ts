@@ -40,6 +40,7 @@ export const en = {
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'experience', label: 'Experience' },
+    { id: 'awards', label: 'Awards' },
     { id: 'work', label: 'Work' },
     { id: 'ai', label: 'AI' },
     { id: 'go', label: 'Go · Linux' },
@@ -111,6 +112,32 @@ export const en = {
       highlights: e.highlights ? [...e.highlights] : [],
       stack: [...e.stack],
     })),
+  },
+
+  awards: {
+    eyebrow: 'Recognition',
+    title: 'Digital Breakthrough',
+    subtitle:
+      "As team lead, I took our team to a regional-stage win and then the national finals of Digital Breakthrough — one of Russia's largest IT contests. Both times, leading the team.",
+    teamLead: 'Team lead',
+    view: 'View',
+    reflectionTitle: 'The final — and a lesson',
+    reflection:
+      "We came painfully close in the final. We were building a mobile app (I wrote it in Xamarin) and the finish line was almost in reach. My mistake was simple: I didn't sleep at all — a full 48 hours. By the end, thoughts drifted past like clouds I couldn't catch, and with just a little left to do, I couldn't hold a single one still. Finishing became impossible for us. It's the clearest lesson I've kept since: knowing your limits is part of the craft.",
+    items: [
+      {
+        kind: 'Diploma',
+        label: 'Regional stage — winner',
+        image: '/diploma-preview.png',
+        href: '/diploma.pdf',
+      },
+      {
+        kind: 'Certificate',
+        label: 'National final — finalist',
+        image: '/certificate.jpg',
+        href: '/certificate.jpg',
+      },
+    ],
   },
 
   projects: {

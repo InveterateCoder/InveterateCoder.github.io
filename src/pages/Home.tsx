@@ -6,6 +6,7 @@ import { About } from '@/sections/About'
 import { SelfTaught } from '@/sections/SelfTaught'
 import { Skills } from '@/sections/Skills'
 import { Experience } from '@/sections/Experience'
+import { Awards } from '@/sections/Awards'
 import { Projects } from '@/sections/Projects'
 import { Vibecoding } from '@/sections/Vibecoding'
 import { GoLinux } from '@/sections/GoLinux'
@@ -22,6 +23,7 @@ export function Home() {
         <SelfTaught />
         <Skills />
         <Experience />
+        <Awards />
         <Projects />
         <Vibecoding />
         <GoLinux />

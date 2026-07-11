@@ -33,7 +33,7 @@ export function Projects() {
 
   return (
     <Section id="work">
-      <SectionHeading index="04" eyebrow={pj.eyebrow} title={pj.title} subtitle={pj.subtitle} />
+      <SectionHeading index="05" eyebrow={pj.eyebrow} title={pj.title} subtitle={pj.subtitle} />
 
       <div ref={ref}>
         {use3D ? (

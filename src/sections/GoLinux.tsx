@@ -36,7 +36,7 @@ export function GoLinux() {
         </Reveal>
 
         <div>
-          <SectionHeading index="06" eyebrow={g.eyebrow} title={g.title} />
+          <SectionHeading index="07" eyebrow={g.eyebrow} title={g.title} />
           <Reveal className="space-y-4 text-muted">
             {g.paragraphs.map((p, i) => (
               <p key={i} className="leading-relaxed">

@@ -1,4 +1,4 @@
-import { Award, FileText } from 'lucide-react'
+import { FileText } from 'lucide-react'
 import { useContent } from '@/hooks/useContent'
 import { Section } from '@/components/layout/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -60,32 +60,7 @@ export function Experience() {
         </ol>
 
         <div className="flex flex-col gap-6">
-          <Reveal className="rounded-2xl border border-white/8 bg-surface/60 p-6 backdrop-blur-md">
-            <h3 className="mb-4 flex items-center gap-2 font-semibold text-ink">
-              <Award size={18} className="text-cyan" />
-              {exp.recognitionTitle}
-            </h3>
-            <ul className="space-y-3">
-              {exp.recognitions.map((r) => (
-                <li key={r.title}>
-                  <a
-                    href={r.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-start gap-2 text-sm text-muted transition-colors hover:text-cyan"
-                  >
-                    <FileText size={15} className="mt-0.5 shrink-0 text-faint group-hover:text-cyan" />
-                    {r.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-
-          <Reveal
-            delay={0.1}
-            className="flex flex-col gap-3 rounded-2xl border border-cyan/20 bg-gradient-to-br from-cyan/5 to-violet/5 p-6"
-          >
+          <Reveal className="flex flex-col gap-3 rounded-2xl border border-cyan/20 bg-gradient-to-br from-cyan/5 to-violet/5 p-6">
             <p className="text-sm text-muted">{exp.ctaText}</p>
             <Button to="/resume" variant="outline" size="sm" className="self-start">
               <FileText size={15} />
