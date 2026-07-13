@@ -89,6 +89,10 @@ const contactLabelRu: Record<string, string> = {
   whatsapp: 'WhatsApp',
   max: 'Max',
 }
+const contactHintRu: Record<string, string> = {
+  whatsapp: 'Написать в WhatsApp',
+  max: 'Написать в Max',
+}
 
 export const ru: Content = {
   ...en,
@@ -327,7 +331,7 @@ export const ru: Content = {
     methods: en.contact.methods.map((m) => ({
       ...m,
       label: contactLabelRu[m.kind] ?? m.label,
-      hint: m.kind === 'max' ? 'Написать в Max' : m.hint,
+      hint: contactHintRu[m.kind] ?? m.hint,
     })),
   },
 

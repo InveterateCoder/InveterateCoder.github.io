@@ -8,7 +8,6 @@ export const site: SiteConfig = {
   // TODO(arthur): confirm the city/country to display publicly.
   location: 'TODO — city, country',
   email: 'inveterate.coder@gmail.com',
-  phone: '+79340120202',
   // TODO(arthur): paste your Web3Forms access key (https://web3forms.com — free, takes a minute).
   web3formsKey: 'TODO-web3forms-access-key',
   nav: [
@@ -36,7 +35,7 @@ export const site: SiteConfig = {
 export const contacts = [
   { kind: 'email', label: 'Email', href: 'mailto:inveterate.coder@gmail.com', hint: 'inveterate.coder@gmail.com' },
   { kind: 'telegram', label: 'Telegram', href: 'https://t.me/InveterateCoder', hint: '@InveterateCoder' },
-  { kind: 'whatsapp', label: 'WhatsApp', href: 'https://wa.me/79340120202', hint: '+7 934 012 0202' },
+  { kind: 'whatsapp', label: 'WhatsApp', href: 'https://wa.me/79340120202', hint: 'Chat on WhatsApp' },
   {
     kind: 'max',
     label: 'Max',

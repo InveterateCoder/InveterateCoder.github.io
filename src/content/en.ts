@@ -27,7 +27,6 @@ export const en = {
   // ---- neutral identity (shared across languages) ----
   name: site.name,
   email: site.email,
-  phone: site.phone,
   socials: site.socials,
   web3formsKey: site.web3formsKey,
 

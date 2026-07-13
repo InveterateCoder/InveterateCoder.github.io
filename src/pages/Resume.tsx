@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowLeft, Mail, MapPin, Phone, Printer } from 'lucide-react'
+import { ArrowLeft, Mail, MapPin, Printer } from 'lucide-react'
 import { useContent } from '@/hooks/useContent'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import { cleanList, isTodo } from '@/lib/content'
@@ -42,11 +42,6 @@ export function Resume() {
             {locationSet && (
               <span className="inline-flex items-center gap-1">
                 <MapPin size={13} /> {c.location}
-              </span>
-            )}
-            {c.phone && (
-              <span className="inline-flex items-center gap-1">
-                <Phone size={13} /> {c.phone}
               </span>
             )}
             {socials.map((s) => (
