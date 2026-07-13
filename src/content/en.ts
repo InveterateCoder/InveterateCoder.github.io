@@ -88,6 +88,9 @@ export const en = {
         highlight: s.highlight,
       })),
     })),
+    legend: { core: 'Daily drivers', supporting: 'In the toolkit', focus: "Where I'm headed" },
+    focusSr: 'where I am headed',
+    focusLink: 'Why Go & Linux',
   },
 
   experience: {

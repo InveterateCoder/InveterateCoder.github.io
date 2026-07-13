@@ -166,6 +166,9 @@ export const ru: Content = {
         note: s.note ? 'Пишу на Go — ищу первую коммерческую роль на Go' : s.note,
       })),
     })),
+    legend: { core: 'Ежедневные инструменты', supporting: 'В арсенале', focus: 'Куда двигаюсь' },
+    focusSr: 'куда двигаюсь',
+    focusLink: 'Почему Go и Linux',
   },
 
   experience: {
