@@ -9,7 +9,7 @@ export interface SocialLink {
   icon: SocialIcon
 }
 
-export type ContactKind = 'email' | 'phone' | 'telegram' | 'whatsapp' | 'max'
+export type ContactKind = 'email' | 'telegram' | 'whatsapp' | 'max'
 
 export interface ContactMethod {
   kind: ContactKind

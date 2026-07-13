@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
+import { ArrowUpRight, Mail, MapPin, MessageCircle } from 'lucide-react'
 import type { ContactKind } from '@/data/types'
 import { useContent } from '@/hooks/useContent'
 import { Section } from '@/components/layout/Section'
@@ -11,8 +11,6 @@ function ContactGlyph({ kind }: { kind: ContactKind }) {
   switch (kind) {
     case 'email':
       return <Mail size={18} />
-    case 'phone':
-      return <Phone size={18} />
     case 'telegram':
       return <TelegramIcon size={18} />
     case 'whatsapp':

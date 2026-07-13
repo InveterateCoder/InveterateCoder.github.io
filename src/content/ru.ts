@@ -88,7 +88,6 @@ const contactLabelRu: Record<string, string> = {
   telegram: 'Telegram',
   whatsapp: 'WhatsApp',
   max: 'Max',
-  phone: 'Позвонить',
 }
 
 export const ru: Content = {

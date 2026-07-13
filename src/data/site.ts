@@ -43,5 +43,4 @@ export const contacts = [
     href: 'https://max.ru/u/f9LHodD0cOKt7Iu1a_X29JcDTzFSA8L4mDYC9hFHHqhMGnEB6PuAGRlpRHQ',
     hint: 'Message me on Max',
   },
-  { kind: 'phone', label: 'Call', href: 'tel:+79340120202', hint: '+7 934 012 0202' },
 ] satisfies ContactMethod[]
