@@ -13,6 +13,7 @@ import { projects } from '@/data/projects'
 import { skillGroups } from '@/data/skills'
 import { intro, goals, selfTaught } from '@/data/about'
 import { vibecoding, goLinux } from '@/data/narrative'
+import { journey } from '@/data/journey'
 
 /** Stable ids so the Russian layer can override experience entries by key. */
 const experienceIds = ['constructor', 'ebac', 'maximum', 'umnico', 'webdev', 'dotnet'] as const
@@ -77,6 +78,15 @@ export const en = {
     stats: selfTaught.stats.map((s) => ({ value: s.value, suffix: s.suffix, label: s.label })),
     stillLearning: 'Still learning',
     arrow: 'curiosity → career',
+  },
+
+  journey: {
+    eyebrow: journey.eyebrow,
+    title: journey.title,
+    subtitle: journey.subtitle,
+    steps: journey.steps.map((s) => ({ tag: s.tag, title: s.title, body: s.body })),
+    mentionsTitle: journey.mentionsTitle,
+    mentions: journey.mentions,
   },
 
   skills: {

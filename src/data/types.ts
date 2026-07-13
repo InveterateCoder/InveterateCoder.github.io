@@ -102,3 +102,12 @@ export interface Recognition {
   title: string
   href: string
 }
+
+export interface JourneyStep {
+  /** The language / tech that defines this chapter, e.g. "C# · .NET". */
+  tag: string
+  /** Short headline for the chapter. */
+  title: string
+  /** The story for this step. */
+  body: string
+}
