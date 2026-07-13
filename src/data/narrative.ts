@@ -16,13 +16,12 @@ export const vibecoding = {
   tools: ['Claude Code', 'Codex'],
 }
 export const goLinux = {
-  eyebrow: "What's next",
-  title: 'Heading for Go. At home on Linux.',
+  eyebrow: 'For the love of it',
+  title: 'In love with Go. At home on Linux.',
   paragraphs: [
-    "After eleven years across .NET, the web, and a lot of Node and NestJS, I've found the thing I want to do next: Go.",
-    "I can build in Go today — I write it for the love of it, not yet for a paycheck — and I'm looking for the role that makes it my daily language. Its simplicity, its concurrency model, and the way it compiles down to a single honest binary just fit how I like to think.",
-    // TODO(arthur): name your distro / setup and why you love it.
+    'Go is what I reach for on my own time, for the sheer love of it. Its simplicity, its concurrency model, and the way it compiles to a single honest binary just fit how I think.',
     'Linux is home. The terminal is where I’m happiest, and infrastructure I can reason about from the kernel up is a big part of why backend work still excites me.',
+    'Where I go next professionally is wide open. In an era where AI closes gaps in missing knowledge almost as fast as they appear, the language matters less than the judgement behind it — point me at an interesting problem and I’ll pick up whatever it needs.',
   ],
-  cta: 'Open to Go roles',
+  cta: 'Open to anything interesting',
 }

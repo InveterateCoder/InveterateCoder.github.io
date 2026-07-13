@@ -7,6 +7,7 @@ const experienceRu: Record<string, Partial<ExpItem>> = {
   constructor: {
     role: 'Backend-разработчик',
     dateRange: 'июнь 2026 — наст. время',
+    location: 'Удалённо — Сингапур',
     summary: 'Автоматизирую бизнес-процессы и встраиваю ИИ в систему поддержки компании.',
     highlights: [
       'Проектирую и поддерживаю бэкенд приложения (и часть веб-клиента).',
@@ -29,6 +30,7 @@ const experienceRu: Record<string, Partial<ExpItem>> = {
   maximum: {
     role: 'Веб-программист',
     dateRange: 'июль 2021 — март 2022',
+    location: 'Удалённо — Россия',
     summary:
       'Отвечал за бэкенд: поддерживал существующую инфраструктуру и с нуля построил микросервисную архитектуру.',
     highlights: [
@@ -39,6 +41,7 @@ const experienceRu: Record<string, Partial<ExpItem>> = {
   umnico: {
     role: 'Разработчик',
     dateRange: 'август 2020 — июль 2021',
+    location: 'Удалённо — Россия',
     summary: 'Фулстек по всему продукту — лендинг, фронтенд приложения и бэкенд-микросервисы.',
     highlights: [
       'Бэкенд-микросервисы на Node.js.',
@@ -70,11 +73,15 @@ const projectBlurbRu: Record<string, string> = {
   'tic-tac-toe': 'Браузерная игра на одного.',
 }
 
-const skillGroupTitlesRu = ['Языки', 'Бэкенд', 'Данные', 'Инфра и DevOps', 'Мастерство']
+const skillGroupTitlesRu = ['Языки', 'Бэкенд', 'Фронтенд', 'Данные', 'Инфра и DevOps', 'Мастерство']
 const skillNameRu: Record<string, string> = {
   'REST APIs': 'REST API',
   'System design': 'Системный дизайн',
   'AI-assisted development': 'Разработка с ИИ',
+}
+const skillNoteRu: Record<string, string> = {
+  Go: 'Умею писать на Go — язык, который люблю (без коммерческого опыта)',
+  Vue: 'меньше практического опыта',
 }
 const contactLabelRu: Record<string, string> = {
   email: 'Почта',
@@ -89,7 +96,7 @@ export const ru: Content = {
 
   role: 'Backend-инженер',
   tagline:
-    '11 лет создаю софт. Глубоко в бэкендах на TypeScript и Node — пишу на Go и хочу сделать его следующей главой.',
+    '11 лет создаю софт — глубоко в бэкендах на TypeScript и Node, с особой любовью к Go и Linux.',
 
   nav: [
     { id: 'about', label: 'Обо мне' },
@@ -143,6 +150,7 @@ export const ru: Content = {
       note: 'Книга, с которой всё началось',
       title: 'Structured Computer Organization',
       author: 'Эндрю С. Таненбаум',
+      image: '/tanenbaum-cover.jpg',
     },
     stats: [
       { value: 26, suffix: '', label: 'Возраст, когда влюбился в CS' },
@@ -157,17 +165,17 @@ export const ru: Content = {
     eyebrow: 'Навыки',
     title: 'Инструментарий',
     subtitle:
-      'Глубоко в мире бэкенда на TypeScript/Node, свой на Linux, а следующую главу нацеливаю на Go.',
+      'Глубоко в мире бэкенда на TypeScript/Node, свой на Linux, и постоянно ковыряю Go — просто из любви к нему.',
     groups: en.skills.groups.map((g, gi) => ({
       title: skillGroupTitlesRu[gi] ?? g.title,
       skills: g.skills.map((s) => ({
         ...s,
         name: skillNameRu[s.name] ?? s.name,
-        note: s.note ? 'Пишу на Go — ищу первую коммерческую роль на Go' : s.note,
+        note: s.note ? (skillNoteRu[s.name] ?? s.note) : s.note,
       })),
     })),
-    legend: { core: 'Ежедневные инструменты', supporting: 'В арсенале', focus: 'Куда двигаюсь' },
-    focusSr: 'куда двигаюсь',
+    legend: { core: 'Ежедневные инструменты', supporting: 'В арсенале', focus: 'Близко сердцу' },
+    focusSr: 'близко сердцу',
     focusLink: 'Почему Go и Linux',
   },
 
@@ -233,21 +241,21 @@ export const ru: Content = {
 
   goLinux: {
     ...en.goLinux,
-    eyebrow: 'Что дальше',
-    title: 'Иду в Go. Дома на Linux.',
+    eyebrow: 'Просто по любви',
+    title: 'Влюблён в Go. Дома на Linux.',
     paragraphs: [
-      'После одиннадцати лет в .NET, вебе и большом количестве Node и NestJS я нашёл то, чем хочу заниматься дальше: Go.',
-      'Уже пишу на Go — пока для души, а не за зарплату — и ищу роль, где он станет моим ежедневным языком. Его простота, модель конкурентности и то, как он компилируется в один честный бинарник, ложатся на то, как я мыслю.',
+      'Go — это то, к чему я тянусь в свободное время, просто из любви к нему. Его простота, модель конкурентности и то, как он компилируется в один честный бинарник, ложатся на то, как я мыслю.',
       'Linux — дом. В терминале мне уютнее всего, а инфраструктура, которую можно понять от ядра и выше, — большая часть того, почему бэкенд всё ещё меня зажигает.',
+      'Куда двигаться дальше в профессии — вопрос открытый. В эпоху, когда ИИ закрывает пробелы в знаниях почти так же быстро, как они появляются, язык важен меньше, чем мышление за ним, — дайте интересную задачу, и я освою всё, что для неё нужно.',
     ],
-    cta: 'Открыт к Go-вакансиям',
+    cta: 'Открыт ко всему интересному',
     terminal: [
       { prompt: true, text: 'go version', out: false },
       { prompt: false, text: 'go version go1.23 linux/amd64', out: true },
       { prompt: true, text: 'go run whoami.go', out: false },
       { prompt: false, text: 'Arthur Grigoryan — backend-инженер.', out: true },
-      { prompt: false, text: 'Пишет на Go для души.', out: true },
-      { prompt: false, text: 'Хочет сделать это работой.', out: true },
+      { prompt: false, text: 'Go и Linux — по большой любви.', out: true },
+      { prompt: false, text: 'Открыт ко всему, что впереди.', out: true },
       { prompt: true, text: '', out: false },
     ],
   },
@@ -257,7 +265,7 @@ export const ru: Content = {
     eyebrow: 'Контакты',
     title: 'Давайте поговорим',
     subtitle:
-      'Хочу попробовать себя в роли на Go — но одинаково уверенно чувствую себя в Node.js и не откажусь ни от чего по-настоящему интересного. С моей командой (Claude и Codex) я быстро осваиваю новое.',
+      'Свой в бэкендах на TypeScript и Node и открыт ко всему по-настоящему интересному. С моей командой — Claude и Codex — и с ИИ, который быстро закрывает пробелы в знаниях, я быстро осваиваю новое.',
     intro: 'Выбирайте, что удобнее — быстрее всего отвечаю в Telegram и WhatsApp.',
     methods: en.contact.methods.map((m) => ({
       ...m,
@@ -270,7 +278,7 @@ export const ru: Content = {
     ...en.resume,
     back: 'На сайт',
     savePdf: 'Сохранить в PDF',
-    roleSuffix: 'иду в Go',
+    roleSuffix: 'открыт к новому',
     experienceTitle: 'Опыт',
     skillsTitle: 'Навыки',
     recognitionTitle: 'Достижения',

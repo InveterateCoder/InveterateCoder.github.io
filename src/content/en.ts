@@ -33,7 +33,7 @@ export const en = {
   // ---- localizable identity ----
   role: 'Backend Engineer',
   tagline:
-    '11 years building software. Deep in TypeScript & Node backends — writing Go and looking to make it my next chapter.',
+    '11 years building software — deep in TypeScript & Node backends, with a soft spot for Go and Linux.',
   location: site.location,
 
   nav: [
@@ -68,7 +68,12 @@ export const en = {
     title: selfTaught.title,
     lead: selfTaught.lead,
     story: [...selfTaught.story],
-    book: { note: selfTaught.book.note, title: selfTaught.book.title, author: selfTaught.book.author },
+    book: {
+      note: selfTaught.book.note,
+      title: selfTaught.book.title,
+      author: selfTaught.book.author,
+      image: selfTaught.book.image,
+    },
     stats: selfTaught.stats.map((s) => ({ value: s.value, suffix: s.suffix, label: s.label })),
     stillLearning: 'Still learning',
     arrow: 'curiosity → career',
@@ -78,7 +83,7 @@ export const en = {
     eyebrow: 'Skills',
     title: 'The toolbox',
     subtitle:
-      'Deep in the TypeScript/Node backend world, comfortable on Linux, and pointing the next chapter at Go.',
+      'Deep in the TypeScript/Node backend world, at home on Linux, and forever tinkering in Go for the love of it.',
     groups: skillGroups.map((g: SkillGroup) => ({
       title: g.title,
       skills: g.skills.map((s: Skill) => ({
@@ -88,8 +93,8 @@ export const en = {
         highlight: s.highlight,
       })),
     })),
-    legend: { core: 'Daily drivers', supporting: 'In the toolkit', focus: "Where I'm headed" },
-    focusSr: 'where I am headed',
+    legend: { core: 'Daily drivers', supporting: 'In the toolkit', focus: 'Close to my heart' },
+    focusSr: 'close to my heart',
     focusLink: 'Why Go & Linux',
   },
 
@@ -187,8 +192,8 @@ export const en = {
       { prompt: false, text: 'go version go1.23 linux/amd64', out: true },
       { prompt: true, text: 'go run whoami.go', out: false },
       { prompt: false, text: 'Arthur Grigoryan — backend engineer.', out: true },
-      { prompt: false, text: 'Writes Go for the love of it.', out: true },
-      { prompt: false, text: 'Looking to make it the day job.', out: true },
+      { prompt: false, text: 'Go & Linux: for the love of it.', out: true },
+      { prompt: false, text: 'Open to whatever comes next.', out: true },
       { prompt: true, text: '', out: false },
     ],
   },
@@ -197,7 +202,7 @@ export const en = {
     eyebrow: 'Contact',
     title: "Let's talk",
     subtitle:
-      "I'd love to try myself in a Go role — but I'm equally at home in Node.js, and I won't turn down anything genuinely interesting. With my team (Claude & Codex), I pick up new ground fast.",
+      "At home in TypeScript & Node backends, and open to anything genuinely interesting. With my team — Claude & Codex — and AI closing knowledge gaps fast, I pick up new ground quickly.",
     intro: "Pick whatever's easiest — I'm quick to reply on Telegram and WhatsApp.",
     methods: contacts.map((c: ContactMethod) => ({
       kind: c.kind,
@@ -210,7 +215,7 @@ export const en = {
   resume: {
     back: 'Back to site',
     savePdf: 'Save as PDF',
-    roleSuffix: 'heading for Go',
+    roleSuffix: 'open to what comes next',
     experienceTitle: 'Experience',
     skillsTitle: 'Skills',
     recognitionTitle: 'Recognition',

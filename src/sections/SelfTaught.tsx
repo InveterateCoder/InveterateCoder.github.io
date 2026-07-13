@@ -1,6 +1,14 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { motion, useInView, useScroll, useTransform } from 'motion/react'
-import { BookOpen, Sparkles } from 'lucide-react'
+import { useEffect, useRef, useState, type PointerEvent, type ReactNode } from 'react'
+import {
+  motion,
+  useInView,
+  useMotionTemplate,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+} from 'motion/react'
+import { Sparkles } from 'lucide-react'
 import { useContent } from '@/hooks/useContent'
 import { Section } from '@/components/layout/Section'
 import { Reveal } from '@/components/ui/Reveal'
@@ -53,37 +61,59 @@ function BookCard({
   book,
   arrow,
 }: {
-  book: { note: string; title: string; author: string }
+  book: { note: string; title: string; author: string; image: string }
   arrow: string
 }) {
+  const reduce = useReducedMotion()
+  const px = useMotionValue(0.5)
+  const py = useMotionValue(0.5)
+  const spring = { stiffness: 150, damping: 18, mass: 0.5 }
+  const rotX = useSpring(useTransform(py, [0, 1], [9, -9]), spring)
+  const rotY = useSpring(useTransform(px, [0, 1], [-11, 11]), spring)
+  const glareX = useTransform(px, [0, 1], ['0%', '100%'])
+  const glareY = useTransform(py, [0, 1], ['0%', '100%'])
+  const glare = useMotionTemplate`radial-gradient(circle at ${glareX} ${glareY}, rgba(255,255,255,0.28), transparent 55%)`
+
+  const onMove = (e: PointerEvent<HTMLDivElement>) => {
+    if (reduce) return
+    const r = e.currentTarget.getBoundingClientRect()
+    px.set((e.clientX - r.left) / r.width)
+    py.set((e.clientY - r.top) / r.height)
+  }
+  const reset = () => {
+    px.set(0.5)
+    py.set(0.5)
+  }
+
   return (
-    <div className="relative mx-auto w-full max-w-xs" style={{ perspective: 900 }}>
-      <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-cyan/30 via-violet/20 to-magenta/20 opacity-60 blur-3xl" />
+    <figure
+      className="group mx-auto w-full max-w-xs"
+      style={reduce ? undefined : { perspective: 1000 }}
+      onPointerMove={onMove}
+      onPointerLeave={reset}
+    >
       <motion.div
-        className="relative aspect-[3/4] overflow-hidden rounded-l-sm rounded-r-xl border border-white/12 bg-gradient-to-br from-[#0e1424] to-[#161a2e] shadow-glow"
-        style={{ transformStyle: 'preserve-3d' }}
-        whileHover={{ rotateY: -8, rotateX: 5 }}
-        transition={{ type: 'spring', stiffness: 200, damping: 18 }}
+        className="relative"
+        style={reduce ? undefined : { rotateX: rotX, rotateY: rotY, transformStyle: 'preserve-3d' }}
       >
-        <div className="absolute inset-y-0 left-0 w-3 bg-gradient-to-b from-cyan/50 to-violet/50" />
-        <div className="flex h-full flex-col justify-between p-6 pl-9">
-          <div>
-            <BookOpen size={28} className="text-cyan" />
-            <p className="mt-6 font-mono text-[11px] tracking-widest text-faint uppercase">
-              {book.note}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-xl leading-snug font-bold text-ink">{book.title}</h3>
-            <p className="mt-2 text-sm text-muted">{book.author}</p>
-          </div>
-          <div className="flex items-center gap-2 font-mono text-xs text-cyan">
-            <Sparkles size={13} /> {arrow}
-          </div>
+        <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-cyan/30 via-violet/25 to-magenta/25 opacity-50 blur-3xl transition-opacity duration-500 group-hover:opacity-80" />
+
+        <div className="relative overflow-hidden rounded-lg border border-white/12 bg-void shadow-glow">
+          <img
+            src={book.image}
+            alt={`Book cover — ${book.title} by ${book.author}`}
+            className="block aspect-[243/350] w-full object-cover"
+          />
+          {!reduce && (
+            <motion.div className="pointer-events-none absolute inset-0" style={{ background: glare }} />
+          )}
         </div>
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent" />
       </motion.div>
-    </div>
+
+      <figcaption className="mt-4 flex items-center justify-center gap-1.5 font-mono text-xs text-muted">
+        <Sparkles size={13} className="text-cyan" /> {arrow}
+      </figcaption>
+    </figure>
   )
 }
 

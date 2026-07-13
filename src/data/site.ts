@@ -4,7 +4,7 @@ export const site: SiteConfig = {
   name: 'Arthur Grigoryan',
   role: 'Backend Engineer',
   tagline:
-    '11 years building software. Deep in TypeScript & Node backends — writing Go and looking to make it my next chapter.',
+    '11 years building software — deep in TypeScript & Node backends, with a soft spot for Go and Linux.',
   // TODO(arthur): confirm the city/country to display publicly.
   location: 'TODO — city, country',
   email: 'inveterate.coder@gmail.com',

@@ -58,6 +58,11 @@ function SkillChip({ skill, focusSr }: { skill: SkillItem; focusSr: string }) {
     >
       {daily && <span aria-hidden className="h-1 w-1 rounded-full bg-cyan/70" />}
       {skill.name}
+      {skill.note && (
+        <span aria-hidden className="text-cyan/70">
+          *
+        </span>
+      )}
     </span>
   )
 }

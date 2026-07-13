@@ -12,7 +12,7 @@ export const experience = [
     role: 'Backend Developer',
     start: 'Jun 2026',
     end: 'Present',
-    location: 'TODO — remote / city',
+    location: 'Remote — Singapore',
     current: true,
     summary:
       "Automating business processes and weaving AI into the company's customer-support system.",
@@ -43,7 +43,7 @@ export const experience = [
     role: 'Web Programmer',
     start: 'Jul 2021',
     end: 'Mar 2022',
-    location: 'TODO — remote / city',
+    location: 'Remote — Russia',
     summary:
       'Owned the backend: kept existing infrastructure healthy and built a new microservice architecture from scratch.',
     highlights: [
@@ -57,7 +57,7 @@ export const experience = [
     role: 'Software Developer',
     start: 'Aug 2020',
     end: 'Jul 2021',
-    location: 'TODO — remote / city',
+    location: 'Remote — Russia',
     summary: 'Full-stack across the product — landing page, app frontend, and backend microservices.',
     highlights: [
       'Backend microservices in Node.js.',

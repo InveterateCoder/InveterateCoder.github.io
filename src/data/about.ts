@@ -25,6 +25,7 @@ export const selfTaught = {
     title: 'Structured Computer Organization',
     author: 'Andrew S. Tanenbaum',
     note: 'The book that started it all',
+    image: '/tanenbaum-cover.jpg',
   },
   stats: [
     { value: 26, suffix: '', label: 'Age I fell for CS' },
